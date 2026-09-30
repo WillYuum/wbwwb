@@ -7,9 +7,9 @@ Is a prop you can add a photo to.
 
 Game.addToManifest({
 	tv: "sprites/tv.png",
-	chyron: "sprites/chyron.png",
-	chyron2: "sprites/chyron2.png",
-	chyron3: "sprites/chyron3.png"
+	chyron: localeAsset("sprites/chyron.png"),
+	chyron2: localeAsset("sprites/chyron2.png"),
+	chyron3: localeAsset("sprites/chyron3.png")
 });
 
 function TV(scene){

@@ -822,3 +822,27 @@ var textStrings_TR = {
 	// (quote0004.png)
 	"misatrributed": "(yanlış bir şekilde ona atfedilir)",
 };
+
+var textStrings = textStrings_EN;
+
+// Change together with textStrings above. Used to pick localized baked-text image assets (see localeAsset()).
+var currentLocale = "EN";
+
+// Some UI graphics have text baked into the image itself (e.g. the PLAY button).
+// If a "<name>_<currentLocale>.<ext>" file exists next to the default asset, use it instead.
+var localizedAssets = {
+	"sprites/bg_preload.png": ["FA"],
+	"sprites/cam/cam-instructions.png": ["FA"],
+	"sprites/chyron.png": ["FA"],
+	"sprites/chyron2.png": ["FA"],
+	"sprites/chyron3.png": ["FA"],
+	"sprites/misc/preload_play.json": ["FA"],
+	"sprites/postcredits/logo.png": ["FA"],
+	"sprites/quote/end_prototype.png": ["FA"]
+};
+
+function localeAsset(path){
+	var variants = localizedAssets[path];
+	if(!variants || variants.indexOf(currentLocale)===-1) return path;
+	return path.replace(/(\.[^.\/]+)$/, "_"+currentLocale+"$1");
+}
