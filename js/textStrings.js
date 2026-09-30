@@ -823,10 +823,22 @@ var textStrings_TR = {
 	"misatrributed": "(yanlış bir şekilde ona atfedilir)",
 };
 
-var textStrings = textStrings_EN;
+// All available language packs, keyed by locale code.
+var textStringsByLocale = {
+	"EN": textStrings_EN,
+	"DE": textStrings_DE,
+	"FA": textStrings_FA,
+	"PT": textStrings_PT,
+	"PT_BR": textStrings_PT_BR,
+	"ES": textStrings_ES,
+	"ZH_TW": textStrings_ZH_TW,
+	"TR": textStrings_TR
+};
 
-// Change together with textStrings above. Used to pick localized baked-text image assets (see localeAsset()).
+// <-- TWEAK THE GAME'S LANGUAGE HERE. Also picks localized baked-text image assets (see localeAsset()).
 var currentLocale = "EN";
+
+var textStrings = textStringsByLocale[currentLocale] || textStrings_EN;
 
 // Some UI graphics have text baked into the image itself (e.g. the PLAY button).
 // If a "<name>_<currentLocale>.<ext>" file exists next to the default asset, use it instead.
