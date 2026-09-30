@@ -835,8 +835,15 @@ var textStringsByLocale = {
 	"TR": textStrings_TR
 };
 
-// <-- TWEAK THE GAME'S LANGUAGE HERE. Also picks localized baked-text image assets (see localeAsset()).
-var currentLocale = "EN";
+// Language is picked via the "?lang=XX" URL query param (e.g. "?lang=DE"), falling back to "EN".
+// Also picks localized baked-text image assets (see localeAsset()).
+function getLocaleFromURL(){
+	var match = window.location.search.match(/[?&]lang=([^&]+)/i);
+	if(!match) return "EN";
+	var locale = decodeURIComponent(match[1]).toUpperCase();
+	return textStringsByLocale[locale] ? locale : "EN";
+}
+var currentLocale = getLocaleFromURL();
 
 var textStrings = textStringsByLocale[currentLocale] || textStrings_EN;
 
